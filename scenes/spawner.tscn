@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://ccyavqv6fyrm3"]
+
+[ext_resource type="Script" uid="uid://tu2tsjs73nkn" path="res://scripts/spawner.gd" id="1_2vbf6"]
+[ext_resource type="PackedScene" uid="uid://dmoyd4whvrb2c" path="res://scenes/obstacle.tscn" id="2_tx2ig"]
+[ext_resource type="PackedScene" uid="uid://dxqsa6w0nb0h7" path="res://scenes/fence.tscn" id="3_6bbd6"]
+
+[sub_resource type="Animation" id="Animation_p5s3f"]
+resource_name = "pattern_a"
+length = 3.0000000000000004
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"spawn_fence"
+}, {
+"args": [],
+"method": &"spawn_obstalce"
+}, {
+"args": [],
+"method": &"spawn_obstalce"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tx2ig"]
+resource_name = "pattern_b"
+length = 3.0000000000000004
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5333333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"spawn_fence"
+}, {
+"args": [],
+"method": &"spawn_fence"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e3f8v"]
+_data = {
+&"pattern_a": SubResource("Animation_p5s3f"),
+&"pattern_b": SubResource("Animation_tx2ig")
+}
+
+[node name="Spawner" type="Node2D" unique_id=266483634]
+script = ExtResource("1_2vbf6")
+obstacle_scene = ExtResource("2_tx2ig")
+fence_scene = ExtResource("3_6bbd6")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1570649533]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=21209577]
+libraries/ = SubResource("AnimationLibrary_e3f8v")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

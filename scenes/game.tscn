@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://c8bh1irhl5yed"]
+
+[ext_resource type="PackedScene" uid="uid://dvro7wncxomoh" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://dmoyd4whvrb2c" path="res://scenes/obstacle.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://3d50s4lnf6o3" path="res://scenes/despawner.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://ccyavqv6fyrm3" path="res://scenes/spawner.tscn" id="5_iywne"]
+[ext_resource type="Script" uid="uid://bqaad4ikqjt86" path="res://scripts/player_state.gd" id="5_p57ef"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_8cj0n"]
+
+[sub_resource type="Gradient" id="Gradient_8cj0n"]
+offsets = PackedFloat32Array(0, 0.003021148)
+colors = PackedColorArray(1, 1, 1, 1, 0.16474164, 0.39774445, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uwrxv"]
+gradient = SubResource("Gradient_8cj0n")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vetol"]
+size = Vector2(1, 1)
+
+[node name="Game" type="Node2D" unique_id=402951457]
+
+[node name="Ground" type="Node2D" parent="." unique_id=1973961086]
+position = Vector2(120.00001, 153)
+scale = Vector2(350, 30)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Ground" unique_id=1171198679]
+mesh = SubResource("QuadMesh_8cj0n")
+texture = SubResource("GradientTexture1D_uwrxv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground" unique_id=1461203137]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D" unique_id=1378489843]
+position = Vector2(-7.6293945e-06, 0)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_vetol")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1597851618]
+anchor_mode = 0
+
+[node name="Player" parent="." unique_id=1695051582 instance=ExtResource("1_uwrxv")]
+position = Vector2(112, 129)
+
+[node name="Obstacle" parent="." unique_id=1859746084 instance=ExtResource("2_yqjtg")]
+position = Vector2(196, 97)
+
+[node name="Despawner" parent="." unique_id=459101178 instance=ExtResource("4_lbhrr")]
+collision_layer = 16
+collision_mask = 12
+
+[node name="Spawner" parent="." unique_id=266483634 instance=ExtResource("5_iywne")]
+position = Vector2(248, 138)
+
+[node name="Entities" type="Node" parent="." unique_id=842549412 groups=["entities"]]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1124914082]
+
+[node name="PlayerState" type="Label" parent="UI" unique_id=1283074048]
+offset_right = 79.0
+offset_bottom = 23.0
+text = "State: default"
+script = ExtResource("5_p57ef")

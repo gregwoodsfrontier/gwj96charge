@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dvro7wncxomoh"]
+
+[ext_resource type="Texture2D" uid="uid://bhf6r6rp6r1gi" path="res://assets/sprites/tile_0097.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dwt6peedbigrl" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://qnsnajef4rwm" path="res://scenes/velocity_component.tscn" id="3_dqkch"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d40fh"]
+radius = 6.0
+height = 14.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1695051582 node_paths=PackedStringArray("velocity_component") groups=["player"]]
+collision_layer = 2
+script = ExtResource("1_qhqgy")
+velocity_component = NodePath("VelocityComponent")
+gravity = Vector2(0, 800)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=628068122]
+texture = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=317052577]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_d40fh")
+
+[node name="VelocityComponent" parent="." unique_id=398898895 instance=ExtResource("3_dqkch")]
+max_speed = 320
+acceleration = 120.0

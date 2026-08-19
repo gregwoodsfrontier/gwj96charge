@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://3d50s4lnf6o3"]
+
+[ext_resource type="Script" uid="uid://252rgkboiej0" path="res://scripts/despawner.gd" id="1_hgi2t"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s3kyl"]
+
+[node name="Despawner" type="Area2D" unique_id=459101178]
+script = ExtResource("1_hgi2t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1783735137]
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_s3kyl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

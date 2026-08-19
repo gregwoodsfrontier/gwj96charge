@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dmoyd4whvrb2c"]
+
+[ext_resource type="Script" uid="uid://crbb2mh8pr8vt" path="res://scripts/obstacle.gd" id="1_7ukg5"]
+[ext_resource type="Texture2D" uid="uid://3p2y63qbpas8" path="res://assets/sprites/tile_0058.png" id="2_drdry"]
+[ext_resource type="PackedScene" uid="uid://qnsnajef4rwm" path="res://scenes/velocity_component.tscn" id="3_cjuko"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vetol"]
+size = Vector2(18, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3kyl"]
+size = Vector2(20, 18)
+
+[node name="Obstacle" type="CharacterBody2D" unique_id=1550199841]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_7ukg5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1444144331]
+position = Vector2(0, -8)
+texture = ExtResource("2_drdry")
+
+[node name="VelocityComponent" parent="." unique_id=398898895 instance=ExtResource("3_cjuko")]
+max_speed = 200
+acceleration = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=432539465]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_vetol")
+
+[node name="PlayerDetection" type="Area2D" parent="." unique_id=1302115616]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" unique_id=146313955]
+position = Vector2(1, -9)
+shape = SubResource("RectangleShape2D_s3kyl")
+debug_color = Color(0.7924226, 0.2892482, 0.78977996, 0.41960785)
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
