@@ -35,8 +35,6 @@ func _process(delta: float) -> void:
 	_jump_input()
 	_dash_input()
 	
-	if _is_dashing():
-		return
 	velocity_component.velocity += gravity * get_process_delta_time()
 
 func _physics_process(delta: float) -> void:
@@ -63,7 +61,7 @@ func _dash_input() -> void:
 	
 	if dash_timer > 0.0:
 		dash_timer = max(0.0, dash_timer - get_process_delta_time())
-	
+	 
 	if dash_timer <= 0.0 and _is_dashing():
 		state_bitflag = PLAYER_STATE.DEFAULT
 		GameEvents.player_dash_ended.emit()

@@ -5,6 +5,9 @@ extends Node
 
 var velocity := Vector2.ZERO
 
+func set_max_speed(_val: int) -> void:
+	max_speed = _val
+
 
 func accelerate_in_direction(direction:Vector2, _speed: int = max_speed):
 	var desired_velocity := direction * _speed
