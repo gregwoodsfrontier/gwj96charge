@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cs70dkp4ww8oc"]
+
+[ext_resource type="Script" uid="uid://dmemxltfhvhvs" path="res://scripts/charge_meter_component.gd" id="1_diilf"]
+
+[node name="ChargeMeterComponent" type="Node" unique_id=1855134481]
+script = ExtResource("1_diilf")
+
+[node name="Timer" type="Timer" parent="." unique_id=1829376924]

@@ -9,17 +9,18 @@ enum PLAYER_STATE {
 }
 
 # code for charging meter
-var current_charge_meter_value: float = 0.0 :
-	set(value):
-		current_charge_meter_value = value
-		GameEvents.charge_value_changed.emit(value)
 var dash_timer: float = 0.0
 var state_bitflag = 0
 
+@onready var charge_meter_component: ChargeMeterComponent = $ChargeMeterComponent
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var charge_bar: ProgressBar = $ChargeBar
 
 @export var velocity_component: Node
 @export var gravity := Vector2(0, 0)
+
+func _ready() -> void:
+	GameEvents.charge_value_changed.connect(_on_charge_value_changed)
 
 func _is_charging() -> bool:
 	return state_bitflag & PLAYER_STATE.CHARGING != 0
@@ -36,7 +37,8 @@ func _check_valid(_node: Node, _method_string: StringName) -> bool:
 
 func _process(delta: float) -> void:
 	_jump_input()
-	_dash_input()
+	_dash_process()
+	#_dash_input()
 	
 	velocity_component.velocity += gravity * get_process_delta_time()
 
@@ -53,17 +55,7 @@ func _jump_input() -> void:
 		if _check_valid(velocity_component, "accelerate_in_direction"):
 			velocity_component.accelerate_in_direction(Vector2.UP)
 
-
-# TODO: Code for dashing and break obstacle. The player should not move from x but all the other 
-# entities and bg should be faster.
-func _dash_input() -> void:
-	if Input.is_action_pressed("charge") and not _is_dashing():
-		state_bitflag = PLAYER_STATE.DASHING
-		dash_timer = GameConstant.PLAYER.DASH_TIME
-		GameEvents.player_dash_started.emit()
-		print("player dash start")
-		#velocity_component.accelerate_in_direction(Vector2.RIGHT, GameConstant.PLAYER.DASH_SPEED)
-	
+func _dash_process() -> void:
 	if dash_timer > 0.0:
 		dash_timer = max(0.0, dash_timer - get_process_delta_time())
 	 
@@ -71,5 +63,32 @@ func _dash_input() -> void:
 		state_bitflag = PLAYER_STATE.DEFAULT
 		GameEvents.player_dash_ended.emit()
 		print("player dash ended")
+	
 
-# TODO: Code for player charging to dash
+# TODO: Code for dashing and break obstacle. The player should not move from x but all the other 
+# entities and bg should be faster.
+func _dash_input() -> void:
+	#if Input.is_action_pressed("charge") and not _is_dashing():
+		#state_bitflag = PLAYER_STATE.DASHING
+		#dash_timer = GameConstant.PLAYER.DASH_TIME
+		#GameEvents.player_dash_started.emit()
+		#print("player dash start")
+		##velocity_component.accelerate_in_direction(Vector2.RIGHT, GameConstant.PLAYER.DASH_SPEED)
+	state_bitflag = PLAYER_STATE.DASHING
+	dash_timer = GameConstant.PLAYER.DASH_TIME
+	GameEvents.player_dash_started.emit()
+	print("player dash start")
+		
+	#if dash_timer > 0.0:
+		#dash_timer = max(0.0, dash_timer - get_process_delta_time())
+	 #
+	#if dash_timer <= 0.0 and _is_dashing():
+		#state_bitflag = PLAYER_STATE.DEFAULT
+		#GameEvents.player_dash_ended.emit()
+		#print("player dash ended")
+
+func _on_charge_value_changed():
+	update_charge_display()
+
+func update_charge_display():
+	charge_bar.value = charge_meter_component.get_percent()
