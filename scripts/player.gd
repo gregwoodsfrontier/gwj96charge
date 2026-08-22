@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 enum PLAYER_STATE {
 	DEFAULT = 0,
@@ -14,6 +15,8 @@ var current_charge_meter_value: float = 0.0 :
 		GameEvents.charge_value_changed.emit(value)
 var dash_timer: float = 0.0
 var state_bitflag = 0
+
+@onready var health_component: HealthComponent = $HealthComponent
 
 @export var velocity_component: Node
 @export var gravity := Vector2(0, 0)
@@ -41,7 +44,9 @@ func _physics_process(delta: float) -> void:
 	if _check_valid(velocity_component, "move"):
 	#if velocity_component and velocity_component.has_method("move"):
 		velocity_component.move(self)
-	
+
+func get_health_component() -> HealthComponent:
+	return health_component
 
 func _jump_input() -> void:
 	if Input.is_action_pressed("jump") and is_on_floor():

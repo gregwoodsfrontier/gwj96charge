@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var base_speed: int = 200
 @export var dash_modifier: float = 1.5
 
+@export var stats : EntityStats
+
 @onready var velocity_component: Node = $VelocityComponent
 
 
@@ -17,6 +19,13 @@ func _process(delta: float) -> void:
 
 func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		var player  = body
+		var health = player.get_health_component()
+		if player._is_dashing():
+			GameEvents.score_received.emit(stats.score)
+		else:
+			if health != null:
+				health.damage(1)
 		queue_free()
 
 func _on_player_dash_start() -> void:

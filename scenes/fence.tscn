@@ -2,7 +2,16 @@
 
 [ext_resource type="Script" uid="uid://c46rv0sh7uier" path="res://scripts/fence.gd" id="1_4tlro"]
 [ext_resource type="Texture2D" uid="uid://cbmgnpuqn0863" path="res://assets/sprites/tile_0092.png" id="1_tphf0"]
+[ext_resource type="Script" uid="uid://ddvr1pgj76pot" path="res://resources/entity_stats.gd" id="2_6ixbi"]
 [ext_resource type="PackedScene" uid="uid://qnsnajef4rwm" path="res://scenes/velocity_component.tscn" id="3_b3etb"]
+
+[sub_resource type="Resource" id="Resource_p57ef"]
+script = ExtResource("2_6ixbi")
+score = 150
+is_breakable = true
+base_speed = 200
+dash_modifier = 1.5
+metadata/_custom_type_script = "uid://ddvr1pgj76pot"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vetol"]
 size = Vector2(18, 17)
@@ -14,6 +23,7 @@ size = Vector2(20, 18)
 collision_layer = 8
 collision_mask = 16
 script = ExtResource("1_4tlro")
+stats = SubResource("Resource_p57ef")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1444144331]
 position = Vector2(0, -8)

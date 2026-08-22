@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c8bh1irhl5yed"]
 
+[ext_resource type="Script" uid="uid://kw78pjujxspp" path="res://scripts/score_manager.gd" id="1_p57ef"]
 [ext_resource type="PackedScene" uid="uid://dvro7wncxomoh" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dmoyd4whvrb2c" path="res://scenes/obstacle.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://3d50s4lnf6o3" path="res://scenes/despawner.tscn" id="4_lbhrr"]
@@ -19,6 +20,9 @@ gradient = SubResource("Gradient_8cj0n")
 size = Vector2(1, 1)
 
 [node name="Game" type="Node2D" unique_id=402951457]
+
+[node name="ScoreManager" type="Node" parent="." unique_id=312942727]
+script = ExtResource("1_p57ef")
 
 [node name="Ground" type="Node2D" parent="." unique_id=1973961086]
 position = Vector2(120.00001, 153)
@@ -61,3 +65,9 @@ offset_right = 79.0
 offset_bottom = 23.0
 text = "State: default"
 script = ExtResource("5_p57ef")
+
+[node name="Score" type="Label" parent="UI" unique_id=1972237306]
+offset_top = 22.0
+offset_right = 43.0
+offset_bottom = 45.0
+text = "Score: 000"
