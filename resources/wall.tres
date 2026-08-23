@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EntityStats" format=3 uid="uid://c6uf0dwi16mrt"]
+
+[ext_resource type="Script" uid="uid://ddvr1pgj76pot" path="res://resources/entity_stats.gd" id="1_dbbiv"]
+[ext_resource type="Texture2D" uid="uid://3p2y63qbpas8" path="res://assets/sprites/tile_0058.png" id="2_wrb2w"]
+
+[resource]
+script = ExtResource("1_dbbiv")
+score = 100
+base_speed = 200
+dash_modifier = 1.5
+texture = ExtResource("2_wrb2w")
+metadata/_custom_type_script = "uid://ddvr1pgj76pot"

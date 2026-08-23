@@ -10,7 +10,8 @@
 
 
 # DONE
-- [x] Make everything else move like faster so that player looks like its dashing
+- [x] Make everything else move like faster so that player looks like its dashing.
+- [x] Charge to dash input
 
 ## Content
 

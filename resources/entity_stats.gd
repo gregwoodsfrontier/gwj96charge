@@ -5,3 +5,4 @@ class_name EntityStats
 @export var is_breakable := false
 @export var base_speed: int
 @export var dash_modifier: float
+@export var texture: Texture2D

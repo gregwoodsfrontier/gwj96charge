@@ -59,6 +59,7 @@ charge={
 2d_physics/layer_3="obstacles"
 2d_physics/layer_4="fences"
 2d_physics/layer_5="score"
+2d_physics/layer_6="score_objects"
 
 [physics]
 
