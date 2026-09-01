@@ -1,26 +1,61 @@
 [gd_scene format=3 uid="uid://c8bh1irhl5yed"]
 
 [ext_resource type="Script" uid="uid://kw78pjujxspp" path="res://scripts/score_manager.gd" id="1_p57ef"]
+[ext_resource type="Texture2D" uid="uid://c4hikupgt5rfq" path="res://assets/sprites/grass_layer.png" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dvro7wncxomoh" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://dmoyd4whvrb2c" path="res://scenes/obstacle.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://3d50s4lnf6o3" path="res://scenes/despawner.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://ccyavqv6fyrm3" path="res://scenes/spawner.tscn" id="5_iywne"]
 [ext_resource type="Script" uid="uid://fo5u67wokalr" path="res://scripts/health_display.gd" id="6_u5sy4"]
 [ext_resource type="Script" uid="uid://yix703uso12x" path="res://scripts/score_label.gd" id="7_u5sy4"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_8cj0n"]
-
-[sub_resource type="Gradient" id="Gradient_8cj0n"]
-offsets = PackedFloat32Array(0, 0.003021148)
-colors = PackedColorArray(1, 1, 1, 1, 0.16474164, 0.39774445, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uwrxv"]
-gradient = SubResource("Gradient_8cj0n")
+[ext_resource type="Texture2D" uid="uid://ch1hq2e7nk0bc" path="res://assets/sprites/mont_layer.png" id="8_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://dtcqnvofx1puf" path="res://assets/sprites/cloud_layer.png" id="9_vtaks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vetol"]
-size = Vector2(1, 1)
+size = Vector2(0.72, 1.3333335)
 
 [node name="Game" type="Node2D" unique_id=402951457]
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1838113595]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=302744676]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23137255, 0.6313726, 0.33333334, 1)
+
+[node name="Mountains" type="Parallax2D" parent="Background" unique_id=1167434786]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(240, 0)
+autoscroll = Vector2(-40, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Background/Mountains" unique_id=1216057740]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_0tnpc")
+
+[node name="Cloud" type="Parallax2D" parent="Background" unique_id=1999409768]
+repeat_size = Vector2(240, 0)
+autoscroll = Vector2(-20, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Background/Cloud" unique_id=1097264046]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_vtaks")
+
+[node name="Foreground" type="CanvasLayer" parent="." unique_id=1752555989]
+layer = -1
+
+[node name="Parallax2D" type="Parallax2D" parent="Foreground" unique_id=806043458]
+repeat_size = Vector2(240, 0)
+autoscroll = Vector2(-60, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Foreground/Parallax2D" unique_id=16989365]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_u5sy4")
 
 [node name="ScoreManager" type="Node" parent="." unique_id=312942727]
 script = ExtResource("1_p57ef")
@@ -29,33 +64,26 @@ script = ExtResource("1_p57ef")
 position = Vector2(120.00001, 153)
 scale = Vector2(350, 30)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Ground" unique_id=1171198679]
-mesh = SubResource("QuadMesh_8cj0n")
-texture = SubResource("GradientTexture1D_uwrxv")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground" unique_id=1461203137]
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D" unique_id=1378489843]
-position = Vector2(-7.6293945e-06, 0)
-scale = Vector2(1, 0.99999994)
+position = Vector2(0, -0.16666794)
+scale = Vector2(1, 0.99351525)
 shape = SubResource("RectangleShape2D_vetol")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1597851618]
 anchor_mode = 0
 
 [node name="Player" parent="." unique_id=1695051582 instance=ExtResource("1_uwrxv")]
-position = Vector2(112, 129)
-
-[node name="Obstacle" parent="." unique_id=1859746084 instance=ExtResource("2_yqjtg")]
-position = Vector2(196, 97)
+position = Vector2(112, 120)
 
 [node name="Despawner" parent="." unique_id=459101178 instance=ExtResource("4_lbhrr")]
 collision_layer = 16
 collision_mask = 32
 
 [node name="Spawner" parent="." unique_id=266483634 instance=ExtResource("5_iywne")]
-position = Vector2(248, 138)
+position = Vector2(248, 128)
 
 [node name="Entities" type="Node" parent="." unique_id=842549412 groups=["entities"]]
 
@@ -66,6 +94,7 @@ offset_left = 200.0
 offset_top = 1.0
 offset_right = 237.0
 offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "3 / 3"
 horizontal_alignment = 2
 script = ExtResource("6_u5sy4")
@@ -75,5 +104,6 @@ offset_left = 3.0
 offset_top = 1.0
 offset_right = 68.0
 offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.0018410678, 0.0018410682, 0.0018410678, 1)
 text = "Score:  0"
 script = ExtResource("7_u5sy4")
