@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameEvents="*uid://bue36kas41778"
-GameConstant="*uid://2n2fcs72qm4c"
 
 [display]
 

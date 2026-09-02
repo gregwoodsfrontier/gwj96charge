@@ -75,7 +75,7 @@ func _dash_input() -> void:
 		#print("player dash start")
 		##velocity_component.accelerate_in_direction(Vector2.RIGHT, GameConstant.PLAYER.DASH_SPEED)
 	state_bitflag = PLAYER_STATE.DASHING
-	dash_timer = GameConstant.PLAYER.DASH_TIME
+	dash_timer = GameConstant.PLAYER_DASH_TIME
 	GameEvents.player_dash_started.emit()
 	print("player dash start")
 		

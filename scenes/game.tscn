@@ -9,11 +9,15 @@
 [ext_resource type="Script" uid="uid://yix703uso12x" path="res://scripts/score_label.gd" id="7_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://ch1hq2e7nk0bc" path="res://assets/sprites/mont_layer.png" id="8_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://dtcqnvofx1puf" path="res://assets/sprites/cloud_layer.png" id="9_vtaks"]
+[ext_resource type="Script" uid="uid://buq613an33fjo" path="res://scripts/game_over_manager.gd" id="10_vtaks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vetol"]
 size = Vector2(0.72, 1.3333335)
 
 [node name="Game" type="Node2D" unique_id=402951457]
+
+[node name="GameOverManager" type="Node" parent="." unique_id=1416223741]
+script = ExtResource("10_vtaks")
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=1838113595]
 layer = -10
@@ -107,3 +111,20 @@ offset_bottom = 24.0
 theme_override_colors/font_color = Color(0.0018410678, 0.0018410682, 0.0018410678, 1)
 text = "Score:  0"
 script = ExtResource("7_u5sy4")
+
+[node name="GameOverScreen" type="CanvasLayer" parent="." unique_id=1505772110]
+process_mode = 3
+layer = 10
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverScreen" unique_id=555575896]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="GameOverScreen/MarginContainer" unique_id=1371203856]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "You win / You Lose"
