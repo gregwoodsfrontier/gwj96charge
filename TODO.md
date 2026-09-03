@@ -1,15 +1,19 @@
 # TODO
-- [] Scoring mechanic
-- [] code so that obstacle and breakable entity is using 1 scene
-- [] Make a win or lose screen.
+- [] Add Maaack Mnimal Game template to work
+- [] Design Mimcic and Wall Monster
+- [] Make Win score workable
+ 
 
 # POLISH
 - []  Variable Height Jump
-- [] Background with GBA template
 - [] new entity sprite
 
 
 # DONE
+- [x] Background with GBA template
+- [x] code so that obstacle and breakable entity is using 1 scene
+- [x] Make a win or lose screen.
+- [x] Scoring mechanic
 - [x] Make everything else move like faster so that player looks like its dashing.
 - [x] Charge to dash input
 
@@ -23,7 +27,7 @@ Tasks related to new content.
 
 - [x] Init project repository
 	  http://github.com/todo-md/todo-md
-- [ ] Upload the game before deadline. Finished or not.
+- [x] Upload the game before deadline. Finished or not.
 
 # DONE
 

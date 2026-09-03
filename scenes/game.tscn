@@ -8,11 +8,20 @@
 [ext_resource type="Script" uid="uid://fo5u67wokalr" path="res://scripts/health_display.gd" id="6_u5sy4"]
 [ext_resource type="Script" uid="uid://yix703uso12x" path="res://scripts/score_label.gd" id="7_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://ch1hq2e7nk0bc" path="res://assets/sprites/mont_layer.png" id="8_0tnpc"]
+[ext_resource type="FontFile" uid="uid://miqlwd1k0sgx" path="res://assets/KiwiSoda.ttf" id="9_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://dtcqnvofx1puf" path="res://assets/sprites/cloud_layer.png" id="9_vtaks"]
 [ext_resource type="Script" uid="uid://buq613an33fjo" path="res://scripts/game_over_manager.gd" id="10_vtaks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vetol"]
 size = Vector2(0.72, 1.3333335)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0xwg3"]
+font = ExtResource("9_kvpfn")
+font_color = Color(0.11764706, 0.28627452, 0.34901962, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fvy3o"]
+font = ExtResource("9_kvpfn")
+font_color = Color(0.11764706, 0.28627452, 0.34901962, 1)
 
 [node name="Game" type="Node2D" unique_id=402951457]
 
@@ -100,6 +109,7 @@ offset_right = 237.0
 offset_bottom = 24.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "3 / 3"
+label_settings = SubResource("LabelSettings_0xwg3")
 horizontal_alignment = 2
 script = ExtResource("6_u5sy4")
 
@@ -110,6 +120,7 @@ offset_right = 68.0
 offset_bottom = 24.0
 theme_override_colors/font_color = Color(0.0018410678, 0.0018410682, 0.0018410678, 1)
 text = "Score:  0"
+label_settings = SubResource("LabelSettings_fvy3o")
 script = ExtResource("7_u5sy4")
 
 [node name="GameOverScreen" type="CanvasLayer" parent="." unique_id=1505772110]
