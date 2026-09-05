@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://l4njxawjp7u1"]
 
 [ext_resource type="Script" uid="uid://ddwwhdnwcw102" path="res://scripts/score_object.gd" id="1_r85qe"]
-[ext_resource type="Texture2D" uid="uid://3p2y63qbpas8" path="res://assets/sprites/tile_0058.png" id="2_r85qe"]
+[ext_resource type="Texture2D" uid="uid://dmxyss6xbmbmh" path="res://assets/sprites/wall_anims.png" id="2_r85qe"]
+[ext_resource type="PackedScene" uid="uid://bdtga3gj0i18y" path="res://scenes/death_component.tscn" id="4_e5whi"]
 [ext_resource type="PackedScene" uid="uid://qnsnajef4rwm" path="res://scenes/velocity_component.tscn" id="4_gn1wn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13n0g"]
+atlas = ExtResource("2_r85qe")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vetol"]
 size = Vector2(18, 17)
@@ -17,11 +22,14 @@ script = ExtResource("1_r85qe")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1444144331]
 position = Vector2(0, -8)
-texture = ExtResource("2_r85qe")
+texture = SubResource("AtlasTexture_13n0g")
+
+[node name="DeathComponent" parent="." unique_id=2014158823 node_paths=PackedStringArray("sprite") instance=ExtResource("4_e5whi")]
+sprite = NodePath("../Sprite2D")
 
 [node name="VelocityComponent" parent="." unique_id=398898895 instance=ExtResource("4_gn1wn")]
 max_speed = 200
-acceleration = 50.0
+acceleration = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=432539465]
 position = Vector2(0, -8.5)

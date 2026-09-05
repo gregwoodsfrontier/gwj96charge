@@ -5,11 +5,13 @@ class_name ScoreObject
 
 @onready var velocity_component: Node = $VelocityComponent
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var death_component: DeathComponent = $DeathComponent
 
 func _ready() -> void:
 	GameEvents.player_dash_started.connect(_on_player_dash_start)
 	GameEvents.player_dash_ended.connect(_on_player_dash_end)
 	sprite_2d.texture = stats.texture
+	#death_component.sprite.texture = stats.texture
 	velocity_component.accelerate_in_direction(Vector2.LEFT)
 
 func _process(delta: float) -> void:
@@ -23,6 +25,7 @@ func _on_player_detection_body_entered(body: Node2D) -> void:
 			if health != null:
 				health.damage(1)
 			
+			death_component._on_death()
 			queue_free()
 			return
 		
@@ -31,6 +34,8 @@ func _on_player_detection_body_entered(body: Node2D) -> void:
 		else:
 			if health != null:
 				health.damage(1)
+		
+		death_component._on_death()
 		queue_free()
 
 func _on_player_dash_start() -> void:
