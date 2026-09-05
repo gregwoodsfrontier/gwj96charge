@@ -139,3 +139,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 text = "You win / You Lose"
+
+[node name="RestartTimer" type="Timer" parent="." unique_id=1969236429]
+wait_time = 3.0
+one_shot = true

@@ -5,6 +5,8 @@
 - [] Design Dash Charge UI
 - [] Design Health bar UI
 - [] UI buttons
+- [] Add JUMP SFX
+- [] Add pushed away sfx
  
 
 # POLISH

@@ -11,15 +11,15 @@ radius = 6.0
 height = 14.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vetol"]
-bg_color = Color(0.24705882, 0.14901961, 0.19215687, 1)
+bg_color = Color(0.23137255, 0.6313726, 0.33333334, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d40fh"]
-bg_color = Color(0.2627451, 0.88235295, 0.7019608, 1)
+bg_color = Color(0.92156863, 0.8784314, 0.69803923, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.24705882, 0.14901961, 0.19215687, 1)
+border_color = Color(0.23137255, 0.6313726, 0.33333334, 1)
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
@@ -35,6 +35,7 @@ gravity = Vector2(0, 800)
 texture = ExtResource("2_qlg0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=317052577]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_d40fh")
 
@@ -55,4 +56,5 @@ offset_bottom = -13.0
 theme_override_styles/background = SubResource("StyleBoxFlat_vetol")
 theme_override_styles/fill = SubResource("StyleBoxFlat_d40fh")
 max_value = 1.0
+value = 0.5
 show_percentage = false
