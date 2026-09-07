@@ -7,6 +7,8 @@
 - [] UI buttons
 - [] Add JUMP SFX
 - [] Add pushed away sfx
+- [] Design PLayer walk and dash animation
+- [] 
  
 
 # POLISH

@@ -6,3 +6,4 @@ signal player_dash_ended
 signal player_dash_started
 signal score_updated(_new_score: int)
 signal score_received(_val: int)
+signal win_con_passed

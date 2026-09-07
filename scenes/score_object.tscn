@@ -44,4 +44,8 @@ position = Vector2(1, -9)
 shape = SubResource("RectangleShape2D_s3kyl")
 debug_color = Color(0.7924226, 0.2892482, 0.78977996, 0.41960785)
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=156796358]
+position = Vector2(1, -7)
+rect = Rect2(-10, -10, 18, 17)
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]

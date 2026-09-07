@@ -54,7 +54,6 @@ func _jump_input() -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		if _check_valid(velocity_component, "accelerate_in_direction"):
 			velocity_component.accelerate_in_direction(Vector2.UP)
-			print(velocity_component.velocity)
 
 func _dash_process() -> void:
 	if dash_timer > 0.0:

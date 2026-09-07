@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://kw78pjujxspp" path="res://scripts/score_manager.gd" id="1_p57ef"]
 [ext_resource type="Texture2D" uid="uid://c4hikupgt5rfq" path="res://assets/sprites/grass_layer.png" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dvro7wncxomoh" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://3d50s4lnf6o3" path="res://scenes/despawner.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://ccyavqv6fyrm3" path="res://scenes/spawner.tscn" id="5_iywne"]
 [ext_resource type="Script" uid="uid://fo5u67wokalr" path="res://scripts/health_display.gd" id="6_u5sy4"]
 [ext_resource type="Script" uid="uid://yix703uso12x" path="res://scripts/score_label.gd" id="7_u5sy4"]
@@ -27,6 +26,9 @@ font_color = Color(0.11764706, 0.28627452, 0.34901962, 1)
 
 [node name="GameOverManager" type="Node" parent="." unique_id=1416223741]
 script = ExtResource("10_vtaks")
+
+[node name="ScoreManager" type="Node" parent="." unique_id=312942727]
+script = ExtResource("1_p57ef")
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=1838113595]
 layer = -10
@@ -70,9 +72,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_u5sy4")
 
-[node name="ScoreManager" type="Node" parent="." unique_id=312942727]
-script = ExtResource("1_p57ef")
-
 [node name="Ground" type="Node2D" parent="." unique_id=1973961086]
 position = Vector2(120.00001, 153)
 scale = Vector2(350, 30)
@@ -90,10 +89,6 @@ anchor_mode = 0
 
 [node name="Player" parent="." unique_id=1695051582 instance=ExtResource("1_uwrxv")]
 position = Vector2(112, 122)
-
-[node name="Despawner" parent="." unique_id=459101178 instance=ExtResource("4_lbhrr")]
-collision_layer = 16
-collision_mask = 32
 
 [node name="Spawner" parent="." unique_id=266483634 instance=ExtResource("5_iywne")]
 position = Vector2(248, 130)

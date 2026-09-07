@@ -13,13 +13,20 @@ func _ready() -> void:
 		health_comp.death.connect(_on_player_death)
 	
 	restart_timer.timeout.connect(_on_restart_timer_timeout)
+	GameEvents.win_con_passed.connect(_on_win_con_passed)
+
+func _on_win_con_passed() -> void:
+	show_game_over_screen(true)
+
+func _on_player_death() -> void:
+	show_game_over_screen(false)
+
+func show_game_over_screen(isWin: bool) -> void:
+	get_tree().paused = true
+	game_over_label.text = GameConstant.GAME_WIN_TEXT if isWin else GameConstant.GAME_LOSE_TEXT
+	game_over_screen.show()
+	restart_timer.start()
 
 func _on_restart_timer_timeout() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()
-
-func _on_player_death() -> void:
-	get_tree().paused = true
-	game_over_label.text = GameConstant.GAME_LOSE_TEXT
-	game_over_screen.show()
-	restart_timer.start()

@@ -6,16 +6,25 @@ class_name ScoreObject
 @onready var velocity_component: Node = $VelocityComponent
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var death_component: DeathComponent = $DeathComponent
+@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 func _ready() -> void:
 	GameEvents.player_dash_started.connect(_on_player_dash_start)
 	GameEvents.player_dash_ended.connect(_on_player_dash_end)
+	visible_on_screen_notifier_2d.screen_exited.connect(_on_screen_exited)
 	sprite_2d.texture = stats.texture
 	#death_component.sprite.texture = stats.texture
 	velocity_component.accelerate_in_direction(Vector2.LEFT)
 
 func _process(delta: float) -> void:
 	velocity_component.move(self)
+
+
+func _on_screen_exited() -> void:
+	if !stats.is_breakable:
+		GameEvents.score_received.emit(stats.score)
+	
+	queue_free()
 
 func _on_player_detection_body_entered(body: Node2D) -> void:
 	var player  = body
