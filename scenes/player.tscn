@@ -1,10 +1,72 @@
 [gd_scene format=3 uid="uid://dvro7wncxomoh"]
 
 [ext_resource type="Script" uid="uid://dwt6peedbigrl" path="res://scripts/player.gd" id="1_qhqgy"]
-[ext_resource type="Texture2D" uid="uid://dix1bttqcdxs5" path="res://assets/sprites/knight-runner2.png" id="2_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://dpkmis8df6s6k" path="res://assets/sprites/knight-runner-anims.png" id="2_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://qnsnajef4rwm" path="res://scenes/velocity_component.tscn" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://b0hhlfmjnpmve" path="res://scenes/health_component.tscn" id="4_dqkch"]
 [ext_resource type="PackedScene" uid="uid://cs70dkp4ww8oc" path="res://scenes/charge_meter_component.tscn" id="5_qlg0r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vetol"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}],
+"loop": 0,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 6.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d40fh"]
 radius = 6.0
@@ -31,11 +93,12 @@ script = ExtResource("1_qhqgy")
 velocity_component = NodePath("VelocityComponent")
 gravity = Vector2(0, 800)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=628068122]
-texture = ExtResource("2_qlg0r")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1323506825]
+sprite_frames = SubResource("SpriteFrames_vetol")
+animation = &"walk"
+autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=317052577]
-visible = false
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_d40fh")
 
