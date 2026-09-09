@@ -6,3 +6,4 @@ class_name EntityStats
 @export var base_speed: int
 @export var dash_modifier: float
 @export var texture: Texture2D
+@export var sprite_frames: SpriteFrames

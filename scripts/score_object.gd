@@ -4,15 +4,19 @@ class_name ScoreObject
 @export var stats : EntityStats
 
 @onready var velocity_component: Node = $VelocityComponent
-@onready var sprite_2d: Sprite2D = $Sprite2D
+#@onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var death_component: DeathComponent = $DeathComponent
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
 	GameEvents.player_dash_started.connect(_on_player_dash_start)
 	GameEvents.player_dash_ended.connect(_on_player_dash_end)
 	visible_on_screen_notifier_2d.screen_exited.connect(_on_screen_exited)
-	sprite_2d.texture = stats.texture
+	if stats.sprite_frames:
+		animated_sprite_2d.sprite_frames = stats.sprite_frames
+		animated_sprite_2d.play("idle")
+	#sprite_2d.texture = stats.texture
 	#death_component.sprite.texture = stats.texture
 	velocity_component.accelerate_in_direction(Vector2.LEFT)
 

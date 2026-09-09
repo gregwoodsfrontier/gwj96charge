@@ -62,30 +62,13 @@ func _dash_process() -> void:
 	if dash_timer <= 0.0 and _is_dashing():
 		state_bitflag = PLAYER_STATE.DEFAULT
 		GameEvents.player_dash_ended.emit()
-		print("player dash ended")
 	
 
-# TODO: Code for dashing and break obstacle. The player should not move from x but all the other 
-# entities and bg should be faster.
+
 func _dash_input() -> void:
-	#if Input.is_action_pressed("charge") and not _is_dashing():
-		#state_bitflag = PLAYER_STATE.DASHING
-		#dash_timer = GameConstant.PLAYER.DASH_TIME
-		#GameEvents.player_dash_started.emit()
-		#print("player dash start")
-		##velocity_component.accelerate_in_direction(Vector2.RIGHT, GameConstant.PLAYER.DASH_SPEED)
 	state_bitflag = PLAYER_STATE.DASHING
 	dash_timer = GameConstant.PLAYER_DASH_TIME
 	GameEvents.player_dash_started.emit()
-	print("player dash start")
-		
-	#if dash_timer > 0.0:
-		#dash_timer = max(0.0, dash_timer - get_process_delta_time())
-	 #
-	#if dash_timer <= 0.0 and _is_dashing():
-		#state_bitflag = PLAYER_STATE.DEFAULT
-		#GameEvents.player_dash_ended.emit()
-		#print("player dash ended")
 
 func _on_charge_value_changed():
 	update_charge_display()

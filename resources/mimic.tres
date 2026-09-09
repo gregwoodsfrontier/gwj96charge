@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="EntityStats" format=3 uid="uid://cx8vaknv85vdy"]
 
 [ext_resource type="Script" uid="uid://ddvr1pgj76pot" path="res://resources/entity_stats.gd" id="1_0eoc1"]
+[ext_resource type="SpriteFrames" uid="uid://xxfn217cfi2w" path="res://resources/mimic_sprite_frames.tres" id="2_munr7"]
 [ext_resource type="Texture2D" uid="uid://cbmgnpuqn0863" path="res://assets/sprites/tile_0092.png" id="2_x1a4e"]
 
 [resource]
@@ -10,4 +11,5 @@ is_breakable = true
 base_speed = 200
 dash_modifier = 1.5
 texture = ExtResource("2_x1a4e")
+sprite_frames = ExtResource("2_munr7")
 metadata/_custom_type_script = "uid://ddvr1pgj76pot"
