@@ -21,8 +21,7 @@ position = Vector2(0, -8)
 sprite_frames = ExtResource("2_e5whi")
 animation = &"idle"
 
-[node name="DeathComponent" parent="." unique_id=2014158823 node_paths=PackedStringArray("sprite") instance=ExtResource("4_e5whi")]
-sprite = NodePath("")
+[node name="DeathComponent" parent="." unique_id=2014158823 instance=ExtResource("4_e5whi")]
 
 [node name="VelocityComponent" parent="." unique_id=398898895 instance=ExtResource("4_gn1wn")]
 max_speed = 200
