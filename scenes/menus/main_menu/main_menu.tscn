@@ -9,10 +9,20 @@
 [ext_resource type="Texture2D" uid="uid://ch1hq2e7nk0bc" path="res://assets/sprites/mont_layer.png" id="7_627ab"]
 [ext_resource type="Texture2D" uid="uid://c4hikupgt5rfq" path="res://assets/sprites/grass_layer.png" id="8_7j6ce"]
 
+[sub_resource type="Gradient" id="Gradient_m0ubd"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mkqn6"]
+gradient = SubResource("Gradient_m0ubd")
+
 [node name="MainMenu" unique_id=170048243 instance=ExtResource("1_peecx")]
 script = ExtResource("2_ub2bi")
 options_packed_scene = ExtResource("3_x31ro")
 credits_packed_scene = ExtResource("4_0jpat")
+
+[node name="BackgroundTextureRect" parent="." index="0" unique_id=1025367827]
+texture = SubResource("GradientTexture1D_mkqn6")
 
 [node name="MenuContainer" parent="." index="1" unique_id=785053879]
 theme_override_constants/margin_bottom = 1
