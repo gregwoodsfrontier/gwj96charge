@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://brcmkpkxkpyfl" path="res://scenes/menus/main_menu/main_menu.gd" id="2_ub2bi"]
 [ext_resource type="PackedScene" uid="uid://bpoesxvd4tad" path="res://scenes/windows/main_menu_options_window.tscn" id="3_x31ro"]
 [ext_resource type="PackedScene" uid="uid://b7wu2tc5h5v3f" path="res://scenes/windows/main_menu_credits_window.tscn" id="4_0jpat"]
+[ext_resource type="Theme" uid="uid://c0axfwwihh04d" path="res://resources/themes/my_theme.tres" id="5_627ab"]
 [ext_resource type="Texture2D" uid="uid://bat3uw4cm111v" path="res://assets/sprites/logo.png" id="5_ub2bi"]
 [ext_resource type="Texture2D" uid="uid://dtcqnvofx1puf" path="res://assets/sprites/cloud_layer.png" id="6_m0ubd"]
 [ext_resource type="Texture2D" uid="uid://ch1hq2e7nk0bc" path="res://assets/sprites/mont_layer.png" id="7_627ab"]
@@ -21,13 +22,20 @@ script = ExtResource("2_ub2bi")
 options_packed_scene = ExtResource("3_x31ro")
 credits_packed_scene = ExtResource("4_0jpat")
 
-[node name="BackgroundTextureRect" parent="." index="0" unique_id=1025367827]
+[node name="BackgroundTextureRect" parent="." index="1" unique_id=1025367827]
 texture = SubResource("GradientTexture1D_mkqn6")
 
-[node name="MenuContainer" parent="." index="1" unique_id=785053879]
+[node name="MenuContainer" parent="." index="2" unique_id=785053879]
 theme_override_constants/margin_bottom = 1
 
-[node name="MenuButtonsMargin" parent="MenuContainer" index="0" unique_id=1532800992]
+[node name="TitleMargin" parent="MenuContainer" index="0" unique_id=1189822984]
+visible = false
+
+[node name="SubTitleMargin" parent="MenuContainer" index="1" unique_id=893436372]
+visible = false
+
+[node name="MenuButtonsMargin" parent="MenuContainer" index="2" unique_id=1532800992]
+theme = ExtResource("5_627ab")
 theme_override_constants/margin_bottom = 4
 
 [node name="MenuButtonsBoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer" parent_id_path=PackedInt32Array(580041505) index="0" unique_id=1691719897]
@@ -49,20 +57,14 @@ theme_override_font_sizes/font_size = 16
 [node name="OptionsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="1" unique_id=1028226159]
 custom_maximum_size = Vector2(-1, 20)
 
-[node name="ExitButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="2" unique_id=1226331361]
+[node name="CreditsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="2" unique_id=1695433230]
 custom_maximum_size = Vector2(-1, 20)
 
-[node name="CreditsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="3" unique_id=23464611]
+[node name="ExitButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="3" unique_id=1226331361]
 custom_maximum_size = Vector2(-1, 20)
 
 [node name="VersionContainer" parent="VersionMargin" parent_id_path=PackedInt32Array(115503069) index="0" unique_id=645412385]
 visible = false
-
-[node name="ExitConfirmation" parent="." index="3" unique_id=1903054312]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
 
 [node name="Logo" type="CanvasLayer" parent="." index="4" unique_id=1478053232]
 
@@ -96,3 +98,9 @@ texture = ExtResource("7_627ab")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("8_7j6ce")
+
+[node name="ExitConfirmation" parent="." index="6" unique_id=1903054312]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
