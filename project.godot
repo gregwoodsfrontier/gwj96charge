@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Godot Wild Jam 96 - Charge"
 config/description="Simple Dino Run game"
-run/main_scene="uid://c8bh1irhl5yed"
+run/main_scene="uid://rnn2lprqlpww"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

@@ -4,21 +4,85 @@
 [ext_resource type="Script" uid="uid://brcmkpkxkpyfl" path="res://scenes/menus/main_menu/main_menu.gd" id="2_ub2bi"]
 [ext_resource type="PackedScene" uid="uid://bpoesxvd4tad" path="res://scenes/windows/main_menu_options_window.tscn" id="3_x31ro"]
 [ext_resource type="PackedScene" uid="uid://b7wu2tc5h5v3f" path="res://scenes/windows/main_menu_credits_window.tscn" id="4_0jpat"]
-[ext_resource type="Theme" uid="uid://c0axfwwihh04d" path="res://resources/themes/my_theme.tres" id="5_ub2bi"]
+[ext_resource type="Texture2D" uid="uid://bat3uw4cm111v" path="res://assets/sprites/logo.png" id="5_ub2bi"]
+[ext_resource type="Texture2D" uid="uid://dtcqnvofx1puf" path="res://assets/sprites/cloud_layer.png" id="6_m0ubd"]
+[ext_resource type="Texture2D" uid="uid://ch1hq2e7nk0bc" path="res://assets/sprites/mont_layer.png" id="7_627ab"]
+[ext_resource type="Texture2D" uid="uid://c4hikupgt5rfq" path="res://assets/sprites/grass_layer.png" id="8_7j6ce"]
 
 [node name="MainMenu" unique_id=170048243 instance=ExtResource("1_peecx")]
 script = ExtResource("2_ub2bi")
 options_packed_scene = ExtResource("3_x31ro")
 credits_packed_scene = ExtResource("4_0jpat")
 
-[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" parent_id_path=PackedInt32Array(704939549) index="0" unique_id=334107926]
-text = "Godot Wild Jam 96 - Charge"
+[node name="MenuContainer" parent="." index="1" unique_id=785053879]
+theme_override_constants/margin_bottom = 1
+
+[node name="MenuButtonsMargin" parent="MenuContainer" index="0" unique_id=1532800992]
+theme_override_constants/margin_bottom = 4
 
 [node name="MenuButtonsBoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer" parent_id_path=PackedInt32Array(580041505) index="0" unique_id=1691719897]
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = -38.5
-offset_top = -83.5
+offset_top = -116.0
 offset_right = 38.5
-offset_bottom = 83.5
+offset_bottom = 0.0
+grow_vertical = 0
+theme_override_constants/separation = 0
+null_focus_enabled = false
 
 [node name="NewGameButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="0" unique_id=1434444510]
-theme = ExtResource("5_ub2bi")
+custom_maximum_size = Vector2(-1, 20)
+theme_override_font_sizes/font_size = 16
+
+[node name="OptionsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="1" unique_id=1028226159]
+custom_maximum_size = Vector2(-1, 20)
+
+[node name="ExitButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="2" unique_id=1226331361]
+custom_maximum_size = Vector2(-1, 20)
+
+[node name="CreditsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="3" unique_id=23464611]
+custom_maximum_size = Vector2(-1, 20)
+
+[node name="VersionContainer" parent="VersionMargin" parent_id_path=PackedInt32Array(115503069) index="0" unique_id=645412385]
+visible = false
+
+[node name="ExitConfirmation" parent="." index="3" unique_id=1903054312]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Logo" type="CanvasLayer" parent="." index="4" unique_id=1478053232]
+
+[node name="TextureRect" type="Sprite2D" parent="Logo" index="0" unique_id=133604516]
+position = Vector2(34, 3)
+texture = ExtResource("5_ub2bi")
+centered = false
+
+[node name="Background" type="CanvasLayer" parent="." index="5" unique_id=1915948653]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="Background" index="0" unique_id=2026772159]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23137255, 0.6313726, 0.33333334, 1)
+
+[node name="Cloud" type="TextureRect" parent="Background" index="1" unique_id=1074713226]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_m0ubd")
+
+[node name="Mt" type="TextureRect" parent="Background" index="2" unique_id=1621621691]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_627ab")
+
+[node name="Mt2" type="TextureRect" parent="Background" index="3" unique_id=138669625]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_7j6ce")
